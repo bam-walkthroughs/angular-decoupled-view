@@ -7,31 +7,39 @@ SETTING UP ANGULAR
 				list.js
 				list-service.js
 				list-item-directive.js
-
+#### In terminal you can use the following command from your project root directory
+`mkdir components && cd components && touch list.js list-service.js list-item-directive.js`				
 		(1.5) under the components folder make folder login
 			-make files
 				login.js
 				login-service.js
 				login-item-directive.js
+#### In terminal you can use the following command
+`mkdir login && cd login && touch login.js login-service.js login-item-directive.js && cd ..`				
 
 (1.6) under the components folder make folder signup
 	-make files
 		signup.js
     	  	signup-service.js
     		signup-item-directive.js
+#### In terminal you can use the following command
+`mkdir signup && cd signip && touch signup.js signup-service.js signup-item-directive.js && cd ..`				
 
 	(1.7)make folder controllers under root folder
 		-make file
 			list-controller.js
-
+#### In terminal you can use the following command from your project root directory
+`mkdir controllers && cd controllers && touch list-controller.js`
 	(1.8)make folder css under root folder
 		-make file
 			style.css
-
+#### In terminal you can use the following command from your project root directory
+`mkdir css && cd css && touch style.css`
 	(1.9) make folder js under root folder
 		-make file
 			app.js
-
+#### In terminal you can use the following command from your project root directory
+`mkdir js && js css && touch app.js`
 	(1.10) make folder templates
 		-make file
 			home.html
@@ -39,8 +47,13 @@ SETTING UP ANGULAR
 			list.html
 			login.html
 			signup.html
+#### In terminal you can use the following command from your project root directory
+`mkdir templates && cd templates && touch home.html list.html login.html signup.html list-item.html`			
 	(1.11) make file in root
 		index.html
+#### In terminal you can use the following command from your project root directory
+`touch index.html`
+`atom . `
 
 INDEX.HTML SETUP
 
@@ -48,17 +61,17 @@ SCRIPT TAGS
 (1)
 Add in the script tag for angular cdn we are using angularjs 1.5
 	Ex
-		  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+		  `<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>`
 
 (2)
 we will be using ui router for this app so below the angular cdn add in the cdn for angular-ui-router
 Ex
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    `<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>`
 
 (3)
 add in the script tag for app.js. This is our javascript file
 Ex
-    <script type="text/javascript" src="/js/app.js"></script>
+    `<script type="text/javascript" src="/js/app.js"></script>`
 //maybe a  note here about how the script order matters because of loading times
 
 (4)
@@ -66,9 +79,14 @@ we are going to name the app in the html tag so angular has a name for the proje
 Ex
 	<html ng-app="todo-angular">
 (5)
-now under the body tag in index.html add a <div ui-view></div>
+now under the body tag in index.html add a `<div ui-view></div>`
 Ex
+```
+<body>
 	<div ui-view></div>
+</body>
+```
+
 //maybe explain what this div is doing, exactly
 
 

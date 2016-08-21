@@ -1,225 +1,293 @@
-SETTING UP ANGULAR
+#SETTING UP ANGULAR
 
-(1.2) make file structure
-	(1.3)make folder components
-		(1.4) under the components folder make folder list
-			-make files
+##Objective:
+The purpose of this walkthrough is to set up the frontend of of our to-do list app. We will be using angular as the client side rendering engine.
+
+1) Inside of the an empty directory make the following file structure.
+
+	 - folder components
 				list.js
 				list-service.js
 				list-item-directive.js
-#### In terminal you can use the following command from your project root directory
-`mkdir components && cd components && touch list.js list-service.js list-item-directive.js`				
-		(1.5) under the components folder make folder login
-			-make files
+In terminal you can use the following command from your project's root directory
+
+```
+mkdir components && cd components && touch list.js list-service.js list-item-directive.js
+```				
+Make inside of the components folder a directory caller login add the following structure.
+
+```
 				login.js
 				login-service.js
 				login-item-directive.js
-#### In terminal you can use the following command
-`mkdir login && cd login && touch login.js login-service.js login-item-directive.js && cd ..`				
+```				
+ In terminal you can use the following command
+ 
+ ```
+mkdir login && cd login && touch login.js login-service.js login-item-directive.js && cd ..
+```				
 
-(1.6) under the components folder make folder signup
-	-make files
+ Inside the components directory make directory signup with the following structure.
+ 
+ ``` 
 		signup.js
-    	  	signup-service.js
-    		signup-item-directive.js
-#### In terminal you can use the following command
-`mkdir signup && cd signip && touch signup.js signup-service.js signup-item-directive.js && cd ..`				
+    	signup-service.js
+    	signup-item-directive.js
+ ```
+In terminal you can use the following command
 
-	(1.7)make folder controllers under root folder
-		-make file
-			list-controller.js
-#### In terminal you can use the following command from your project root directory
-`mkdir controllers && cd controllers && touch list-controller.js`
-	(1.8)make folder css under root folder
-		-make file
-			style.css
-#### In terminal you can use the following command from your project root directory
-`mkdir css && cd css && touch style.css`
-	(1.9) make folder js under root folder
-		-make file
-			app.js
-#### In terminal you can use the following command from your project root directory
-`mkdir js && js css && touch app.js`
-	(1.10) make folder templates
-		-make file
+```
+mkdir signup && cd signup && touch signup.js signup-service.js signup-item-directive.js && cd ..
+```				
+
+2) Make directory controllers under root directory add to that a file called list-controller.hs
+		
+In terminal you can use the following command from your project root directory
+
+```
+mkdir controllers && cd controllers && touch list-controller.js
+```
+
+Inside of your root directory make a new directory called css and inside of that directory at a style.css
+
+```		
+mkdir css && cd css && touch style.css
+```
+Inside of the root directory make a directory called js, inside of a js add a file app.js
+
+```
+mkdir js && cd js && touch app.js
+```
+Inside of the root directory make a directory called templates, add the following files
+
+```
 			home.html
 			list-item.html
 			list.html
 			login.html
 			signup.html
-#### In terminal you can use the following command from your project root directory
-`mkdir templates && cd templates && touch home.html list.html login.html signup.html list-item.html`			
-	(1.11) make file in root
-		index.html
-#### In terminal you can use the following command from your project root directory
-`touch index.html`
-`atom . `
+```
+In terminal you can use the following command from your project root directory
 
-INDEX.HTML SETUP
+```
+mkdir templates && cd templates && touch home.html list.html login.html signup.html list-item.html
+```			
+Inside of the root directory make file index.html
 
-SCRIPT TAGS
-(1)
-Add in the script tag for angular cdn we are using angularjs 1.5
-	Ex
-		  `<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>`
+In terminal you can use the following command from your project root directory
 
-(2)
-we will be using ui router for this app so below the angular cdn add in the cdn for angular-ui-router
-Ex
-    `<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>`
+```
+touch index.html && atom .
+``` 
 
-(3)
-add in the script tag for app.js. This is our javascript file
-Ex
-    `<script type="text/javascript" src="/js/app.js"></script>`
-//maybe a  note here about how the script order matters because of loading times
+##INDEX.HTML SETUP
 
-(4)
-we are going to name the app in the html tag so angular has a name for the project add in ng-angular=”angular-app-name”
-Ex
+(1) Add in the script tag for angular cdn we are using angularjs 1.5.5
+	
+```
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+```		  
+
+(2) We will be using ui-router for this app so below the angular cdn add in the cdn for angular-ui-router.
+
+```
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+
+```
+
+(3) Add in the script tag for app.js. This is our javascript file.
+
+```
+    <script type="text/javascript" src="/js/app.js"></script>
+ ```
+Do to the way the scripts are loaded, you must have the script tags in the above order. 
+
+(4) We are going to name the app in the html tag so angular has a name for the project 
+	
+```
 	<html ng-app="todo-angular">
-(5)
-now under the body tag in index.html add a `<div ui-view></div>`
-Ex
+```
+(5) Now under the body tag in index.html add a `<div ui-view></div>`
+
 ```
 <body>
 	<div ui-view></div>
 </body>
 ```
 
-//maybe explain what this div is doing, exactly
+This div is the catcher div for our templates. When we create our router, our templates will be displayed here when pages are changed. 
 
 
+##APP.JS SETUP PART ONE:
+The app.js file will be used to make different states with ui-router for the angular app. For more [info](https://scotch.io/tutorials/angular-routing-using-ui-router) click the link. 
 
+(1)Make an Immediately Invoked Function Expression (IIFE) we do this to invoke the function anytime the file is accessed.
 
-
-
-
-
-
-APP.JS SETUP PART ONE:
-The app.js file will be used to make different states with ui-router for the angular app. For more info https://scotch.io/tutorials/angular-routing-using-ui-router
-
-(1)Make an Immediately invoked function(iffe)   we do this to invoke the function anytime the file is accessed
-	Ex
-		(function(){
-			//code will go here
+```
+(function(){
+	//code will go here
 })();
-(2)
- inside the iffe* set up the angular module.  module are container for the different parts of your app  controllers, services, filters, directives, etc. For now inject the name of our app and the ui.router. Whenever you inject into a module inject them as a string.
-Ex
+```
+(2) Inside the [iife](http://benalman.com/news/2010/11/immediately-invoked-function-expression/)(Immediately Invoked Function Expression) set up the angular module.  Modules are containers for the different parts of your app  controllers, services, filters, directives, etc. For now inject the name of our app and the ui.router. Whenever you inject into a module inject them as a string.
+
+```
+(function(){
 	angular
  	 .module('todo-angular', [
    	 'ui.router'
-])
-//maybe remind the reader what the fuck an iffe is (me)
+	  ])
+})
+	
+```
 
-(3)
- setup angularjs configuration or the angular providers that the app will use to make the state. We will use $stateProvider, $urlRouterProvider and $locationProvider.
-Ex:
-	.config(function($stateProvider, $urlRouterProvider, $locationProvider){
+(3) Now that the IIFE is completed, we are going to start the .config. In the .config function we will pass the providers the app will be using. They are:  
+	 `$stateProvider`  
+>The new $stateProvider works similar to Angular's v1 router, but it focuses purely on state. A state corresponds to a "place" in the application in terms of the overall UI and navigation. A state (via the controller / template / view properties) describes what the UI looks like and does at that place. States often have things in common, and the primary way of factoring out these commonalities in this model is via the state hierarchy, i.e. parent/child states aka nested states.
+[source](https://github.com/angular-ui/ui-router/wiki)
+
+`$urlRouterProvider`
+ `$locationProvider`
+ 
+$urlRouterProvider and $locationProvider will also be injected into our `.confg`.
+
+```
+.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 		//code will go here
 	}):
+```
 (4)
 we are going to make a default page using $urlRouterProvider and the otherwise(); function. This will do a redirect to the index page when go to the app.
 Ex
+```
 	  $urlRouterProvider.otherwise('/');
+```
 
 (5)
-Using the $stateProvider we will build the state for our home page. We need a few things to do this. A state() function to invoke the state. The url that will display and the templates that we will use. Set this up in a object format. We will give this a home state, a url of / and a templateUrl of /templates/home.html.
-Ex
+Using the $stateProvider we will build the state for our home page. We need a few things to do this. A state() function to invoke the state. The url that will display and the templates that we will use. Set this up in a object format. We will give this a home state, a url of '/' and a templateUrl of /templates/home.html.
+
+```
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
+	    $urlRouterProvider.otherwise('/');
+	    
 	    $stateProvider
-      		.state('home', {
-     		 url: '/',
-     		   templateUrl: '/templates/home.html'
+      	.state('home', {
+     		url: '/',
+     		templateUrl: '/templates/home.html'
   	    })
+})
+	
+```
 
-
-SETTING UP LOGIN SERVICE
+##SETTING UP LOGIN SERVICE
 (1)
 First thing we are going to do is make a new module for the login by injecting our service and directive we will be making. We do this so we can inject just the signup.js into our angular app and that will be able to use the service and directive we will make
-Ex
-	"use strict";
+
+```
+"use strict";
 
 angular
  		 .module('todo-angular.login',[
   'todo-angular.login.login-directive',
   'todo-angular.login.login-service'
 ]);
-
+```
 
 (2)
-login-service.js will be used to make our api calls to out auth/login route for authorization. Go into the file and make an Immediately invoked function(iffe) . //ah, here we are
-	Ex
-		(function(){
-			//code will go here
+login-service.js will be used to make our API calls out to auth/login route for authorization. Go into the file and make an Immediately invoked function(IIFE). 
+
+```
+(function(){
+	//code will go here
 })();
+```
 (3)
 next set up the module for this service remember to pass them through as a string. Start with the name of the angular app the file that the service is in and the name of the service. This is attaching the service to your angular app. Add in an empty array to the end of the module.
-Ex
-	  angular
-    		.module('todo-angular.login.login-service', [])
+
+```
+angular.module('todo-angular.login.login-service', [])
+    		
+```
+
 (4)
 Now we will create the service. Invoke the .service() function and pass the name of the service as a string then pass the string through as a parameter. We pass through a string  first so angular will not change the parameters for services when the files are minified.
-Ex
-	.service('loginService', loginService);
+
+```
+.service('loginService', loginService);
+```
+	
 (5)
 Now that we have a loginService let's inject some angular services into it with $inject . Inject ‘$http’, and ‘$location’ as a string into the loginService.
-https://docs.angularjs.org/api/ng/service/$http
-https://docs.angularjs.org/api/ng/service/$location
-Ex
-	    loginService.$inject = ['$http', '$location'];
+[$http](https://docs.angularjs.org/api/ng/service/)
+[$location](https://docs.angularjs.org/api/ng/service/)
 
+```
+	    loginService.$inject = ['$http', '$location'];
+```
 
 
 (6)
 Next we will set up what the loginService does. Pass in the $http and $location as parameters.
 Ex
+
+```
 	function loginService($http, $location){
 		//code will go here
 	}
-
+```
 (7)
 Make a var user ={} so we can assign the data we get back from our api calls to a user object.
-Ex
-	Var user = {};
+
+```
+	var user = {};
+```		
+
 (8)
 Now we will set up what the loginService will return when it is used elsewhere. We will make 3 function for the loginService to return loginUser, getToken, getUserId.
-Ex
+
+```
       return {
         getToken: getToken,
         getUserId : getUserId,
         loginUser: loginUser
       };
-
+```
 (9)
-Make a _setUserData function that will take the date we get back from the api and store it to our user var we make;
-Ex
+Make a setUserData function that will take the date we get back from the api and store it to our user var we make;
+
+```
 	      function _setUserData(data) {
         		user = data;
       	      }
-
+```
 (10)
 Make the getToken function this will return the user token that JWT our api is sending.
-Ex
+
+```
  	function getToken() {
 		return user.token:
 	}
+```	
 (11)
-Make the getUserId function this will return the userId that our api is sending.
-Ex
+Make the getUserId function this will return the userId that our api is sending.  
+
+```
  	function getUserId() {
 		return user.userId:
 	}
+```  
+	
 (12)
-Make the loginUser function. this function will post to our api with the userName and password.
-Ex
+Make the loginUser function. this function will post to our api with the userName and password.  
+
+```
 	      function loginUser(userName, password) {
 		//code will go here
 	     }
+```	     
 (13)
-Use the $http service we injected. And make the api api call
-Ex
+Use the $http service we injected. And make the API api call.  
+
+```
 $http({
 method: 'post',
           		params: {
@@ -234,8 +302,60 @@ method: 'post',
        	   	}, function errorCallback(err) {
           			console.log(err);
           });
+```  
+###The Final Product for Login Service
 
-SETTING UP LOGIN DIRECTIVE  
+```
+(function(){
+ 
+  angular
+    .module('todo-angular.login.login-service', [])
+    .service('loginService', loginService);
+    loginService.$inject = ['$http', '$location'];
+
+    function loginService($http, $location){
+      var user = {};
+      return {
+        getToken: getToken,
+        getUserId : getUserId,
+        loginUser: loginUser
+      };
+      function _setUserData(data) {
+        user = data;
+        // console.log(user, 'user');
+      }
+      function getToken() {
+          return user.token;
+      }
+      function getUserId(){
+        return user.userId;
+      }
+      function loginUser(userName, password) {
+        $http({
+          method: 'post',
+          params: {
+            userName: userName,
+            password: password
+          },
+          // url: 'http://localhost:3000/auth/login'
+              url: 'https://decoupled-api-server.herokuapp.com/auth/login'
+        }).then(function successCallback(response) {
+            console.log( response);
+            _setUserData(response.data);
+            $location.path('/list');
+          }, function errorCallback(err) {
+            console.log(err);
+          });
+      }
+
+    }
+
+
+})();
+```
+          
+
+##SETTING UP LOGIN DIRECTIVE  
 
 (1)
 login-service.js will be used to make our api calls to out auth/login route for authorization. Go into the file and make an Immediately invoked function(iffe) .

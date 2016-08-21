@@ -30,5 +30,5 @@
       //APP.JS SETUP PART TWO: 2
       $locationProvider.html5Mode(true);
   });
-//invokes (iffe) anytime the file is accessed
+//invokes (IIFE) anytime the file is accessed
 })();

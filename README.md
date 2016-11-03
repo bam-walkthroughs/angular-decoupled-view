@@ -40,7 +40,7 @@ In terminal you can use the following command
 mkdir signup && cd signup && touch signup.js signup-service.js signup-item-directive.js && cd ..
 ```				
 
-2) Make directory controllers under root directory add to that a file called list-controller.hs
+2) Make directory controllers under root directory add to that a file called list-controller.js
 		
 In terminal you can use the following command from your project root directory
 
@@ -119,16 +119,16 @@ This div is the catcher div for our templates. When we create our router, our te
 
 
 ##APP.JS SETUP PART ONE:
-The app.js file will be used to make different states with ui-router for the angular app. For more [info](https://scotch.io/tutorials/angular-routing-using-ui-router) click the link. 
+The app.js file will be used to make different states with ui-router for the angular app. For more on [ui-router](https://scotch.io/tutorials/angular-routing-using-ui-router) click the link. 
 
-(1)Make an Immediately Invoked Function Expression (IIFE) we do this to invoke the function anytime the file is accessed.
+(1) Make an Immediately Invoked Function Expression (IIFE) we do this to invoke the function anytime the file is accessed.
 
 ```
 (function(){
 	//code will go here
 })();
 ```
-(2) Inside the [iife](http://benalman.com/news/2010/11/immediately-invoked-function-expression/)(Immediately Invoked Function Expression) set up the angular module.  Modules are containers for the different parts of your app  controllers, services, filters, directives, etc. For now inject the name of our app and the ui.router. Whenever you inject into a module inject them as a string.
+(2) Inside the [iife] (http://benalman.com/news/2010/11/immediately-invoked-function-expression/)(Immediately Invoked Function Expression) set up the angular module.  Modules are containers for the different parts of your app  controllers, services, filters, directives, etc. For now inject the name of our app and the ui.router. Whenever you inject into a module inject them as a string.
 
 ```
 (function(){
@@ -235,7 +235,7 @@ Ex
 	}
 ```
 (7)
-Make a var user ={} so we can assign the data we get back from our api calls to a user object.
+Make a var user = {} so we can assign the data we get back from our api calls to a user object.
 
 ```
 	var user = {};
@@ -268,7 +268,7 @@ Make the getToken function this will return the user token that JWT our api is s
 	}
 ```	
 (11)
-Make the getUserId function this will return the userId that our api is sending.  
+Make the getUserId function this will return the ``` userId ``` that our api is sending.  
 
 ```
  	function getUserId() {
